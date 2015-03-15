@@ -4,4 +4,9 @@ Rails.application.routes.draw do
   post 'sign-in', to: 'authentication#create'
   get 'sign-up', to: 'users#new'
   post 'sign-up', to: 'users#create'
+  get 'sign-out', to: 'authentication#destroy'
+
+  resources :users, only: [] do
+    resources :posts, only: [:new, :create, :show, :index]
+  end
 end
